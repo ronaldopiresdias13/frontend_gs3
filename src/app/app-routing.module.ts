@@ -27,6 +27,19 @@ const routes: Routes = [
     path: 'list-usuarios',
     loadChildren: () => import('./pages/list-usuarios/list-usuarios.module').then( m => m.ListUsuariosPageModule)
   },
+  {
+    path: 'add-edit-profile',
+    loadChildren: () => import('./pages/add-edit-profile/add-edit-profile.module').then( m => m.AddEditProfilePageModule)
+  },
+  {
+    path: 'add-edit-profile/:id',
+    loadChildren: () => import('./pages/add-edit-profile/add-edit-profile.module').then( m => m.AddEditProfilePageModule)
+  },
+  {
+    path: 'add-edit-user',
+    loadChildren: () => import('./pages/add-edit-user/add-edit-user.module').then( m => m.AddEditUserPageModule)
+  },
+
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +10,22 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-  create(formulario: string,) {
-    return this.http.post(`${this.apiUrl}/profiles`, formulario);
+  create(formulario: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/profiles`, formulario);
   }
 
-  getAll(){
-    return this.http.get(`${this.apiUrl}/profiles`);
+  getAll(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/profiles`);
+  }
+  getProfileById(id: any) {
+    return this.http.get(`${this.apiUrl}/profiles/${id}`);
+  }
+
+  update(id: any, data: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/profiles/${id}`, data);
+  }
+
+  delete(id: any): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/profiles/${id}`);
   }
 }

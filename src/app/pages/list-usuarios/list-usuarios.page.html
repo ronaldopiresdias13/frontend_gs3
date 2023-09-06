@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>list-usuarios</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Usuarios</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,6 +12,8 @@
   <ion-list [inset]="true">
     <ion-item *ngFor="let user of users">
       <ion-label>{{user?.name}}</ion-label>
+      <ion-button color="warning">Editar</ion-button>
+      <ion-button color="danger">Excluir</ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

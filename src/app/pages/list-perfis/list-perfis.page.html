@@ -1,13 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>list-perfis</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profiles</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-button expand="full" (click)="addProfile()">Adicionar Perfil</ion-button>
   <ion-list>
     <ion-item *ngFor="let profile of profiles">
       <ion-label>{{ profile.name }}</ion-label>
+      <ion-button color="warning" (click)="editProfile(profile.id)">Editar</ion-button>
+      <ion-button color="danger" (click)="deleteProfile(profile.id)">Excluir</ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

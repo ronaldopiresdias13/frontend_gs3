@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MeuPerfilPage implements OnInit {
 
+  user: any
   constructor() { }
 
   ngOnInit() {
