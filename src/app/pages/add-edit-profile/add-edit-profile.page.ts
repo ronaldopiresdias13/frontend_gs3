@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class AddEditProfilePage implements OnInit {
 
   profile: any = {};
   isEditing = false;
+  subscription = new Subscription;
 
   constructor(
     private profileService: ProfileService,
@@ -24,7 +26,7 @@ export class AddEditProfilePage implements OnInit {
     const profileId = this.route.snapshot.paramMap.get('id');
     if (profileId) {
       this.isEditing = true;
-      this.profileService.getProfileById(profileId).subscribe(res => {
+      this.subscription = this.profileService.getProfileById(profileId).subscribe(res => {
         this.profile = res;
       });
     }
@@ -33,15 +35,19 @@ export class AddEditProfilePage implements OnInit {
   saveProfile() {
     if (this.isEditing) {
       console.log("EDITAR")
-      this.profileService.update(this.profile.id, this.profile).subscribe(() => {
+      this.subscription = this.profileService.update(this.profile.id, this.profile).subscribe(() => {
         this.navCtrl.navigateRoot('/list-perfis');
       });
     } else {
       console.log("SALVAR NOVO")
-      this.profileService.create(this.profile).subscribe(() => {
+      this.subscription = this.profileService.create(this.profile).subscribe(() => {
         this.navCtrl.navigateRoot('/list-perfis');
       });
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

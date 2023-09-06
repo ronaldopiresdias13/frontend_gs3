@@ -32,4 +32,8 @@ export class AuthService {
   delete(id: any): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/users/${id}`);
   }
+
+  create(formulario: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/users`, formulario);
+  }
 }

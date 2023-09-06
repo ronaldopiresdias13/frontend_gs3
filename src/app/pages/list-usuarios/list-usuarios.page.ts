@@ -21,7 +21,7 @@ export class ListUsuariosPage implements OnInit {
   }
 
   getAllUsers(){
-    this.authService.getAll().subscribe(res => {
+    this.subscription = this.authService.getAll().subscribe(res => {
       this.users = res;
       console.log(res)
     })
@@ -36,7 +36,7 @@ export class ListUsuariosPage implements OnInit {
   }
 
   deleteUser(userId: string) {
-    this.authService.delete(userId).subscribe(() => {
+    this.subscription = this.authService.delete(userId).subscribe(() => {
       this.getAllUsers();
     });
   }

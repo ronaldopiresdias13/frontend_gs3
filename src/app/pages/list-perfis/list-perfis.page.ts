@@ -38,7 +38,7 @@ export class ListPerfisPage implements OnInit {
   }
 
   deleteProfile(profileId: string) {
-    this.profileService.delete(profileId).subscribe(() => {
+    this.subscription = this.profileService.delete(profileId).subscribe(() => {
       this.getAllProfiles();
     });
   }

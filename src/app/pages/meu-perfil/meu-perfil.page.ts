@@ -11,6 +11,12 @@ export class MeuPerfilPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      this.user = JSON.parse(userData);
+    } else {
+      console.error("Dados do usuário não encontrados no localStorage.");
+    }
   }
 
 }

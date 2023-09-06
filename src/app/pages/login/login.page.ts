@@ -12,7 +12,7 @@ import { first } from 'rxjs';
 })
 export class LoginPage implements OnInit {
   form!: FormGroup;
-
+  mostrarSenha = false;
   constructor(private navCtrl: NavController,  
     private router: Router,
     private authService: AuthService,
@@ -42,6 +42,10 @@ export class LoginPage implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]]
     });
+  }
+
+  changeMostrarSenha() {
+    this.mostrarSenha = !this.mostrarSenha;
   }
 
 }
