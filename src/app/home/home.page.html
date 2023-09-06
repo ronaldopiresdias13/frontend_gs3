@@ -10,17 +10,17 @@
   <ion-card>
     <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
     <ion-card-header>
-      <ion-card-title>{{user?.user?.name }}</ion-card-title>
+      <ion-card-title>{{user?.name }}</ion-card-title>
       <ion-card-subtitle>
-        <ion-badge color="primary">{{user?.user?.profile?.name}}</ion-badge>
+        <ion-badge color="primary">{{user?.profile?.name}}</ion-badge>
       </ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
       <ion-item button routerLink="/meu-perfil">
-        <ion-label>Meu Perfil</ion-label>
+        <ion-label>Editar Perfil</ion-label>
       </ion-item>
-      <div *ngIf="user?.user?.profile.name === 'Admin'">
+      <div *ngIf="user?.profile.name === 'Admin'">
         <ion-item button routerLink="/list-perfis">
           <ion-label>Perfis</ion-label>
         </ion-item>

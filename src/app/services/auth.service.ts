@@ -10,11 +10,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(userForm: string,) {
-    return this.http.post(`${this.apiUrl}/login`, userForm)
-      .pipe(map(user => {
-        localStorage.setItem('user', JSON.stringify(user));
-      }));
+  login(userForm: string):Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, userForm)
   }
 
   getAll(){
