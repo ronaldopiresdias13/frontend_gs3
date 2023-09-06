@@ -9,11 +9,12 @@
 
 
 <ion-content color="light">
+  <ion-button expand="full" (click)="addUser()">Adicionar Usuario</ion-button>
   <ion-list [inset]="true">
     <ion-item *ngFor="let user of users">
       <ion-label>{{user?.name}}</ion-label>
-      <ion-button color="warning">Editar</ion-button>
-      <ion-button color="danger">Excluir</ion-button>
+      <ion-button color="warning" (click)="editUser(user.id)">Editar</ion-button>
+      <ion-button color="danger" (click)="deleteUser(user.id)">Excluir</ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

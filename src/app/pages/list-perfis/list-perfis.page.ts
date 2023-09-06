@@ -39,7 +39,6 @@ export class ListPerfisPage implements OnInit {
 
   deleteProfile(profileId: string) {
     this.profileService.delete(profileId).subscribe(() => {
-      // Atualize a lista de perfis após a exclusão
       this.getAllProfiles();
     });
   }

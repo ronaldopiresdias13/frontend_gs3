@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'add-edit-user',
     loadChildren: () => import('./pages/add-edit-user/add-edit-user.module').then( m => m.AddEditUserPageModule)
   },
+  {
+    path: 'add-edit-user/:id',
+    loadChildren: () => import('./pages/add-edit-user/add-edit-user.module').then( m => m.AddEditUserPageModule)
+  },
 
 ];
 
