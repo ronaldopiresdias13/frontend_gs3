@@ -28,6 +28,7 @@ export class HomePage implements OnInit{
   async logout() {
     await this.storage.remove('user');
     this.router.navigate(['/login']);
+    
   }
 
 
