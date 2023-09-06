@@ -17,4 +17,8 @@ export class AuthService {
         localStorage.setItem('user', JSON.stringify(user));
       }));
   }
+
+  getAll(){
+    return this.http.get(`${this.apiUrl}/users`);
+  }
 }

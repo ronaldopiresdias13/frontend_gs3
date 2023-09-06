@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-list-perfis',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-perfis.page.scss'],
 })
 export class ListPerfisPage implements OnInit {
+  profiles: any = []
+ 
+  constructor(
+    private profileService: ProfileService
 
-  constructor() { }
+  ) { }
 
   ngOnInit() {
+    this.getAllUsers()
+  }
+
+  getAllUsers(){
+    this.profileService.getAll().subscribe(res => {
+      this.profiles = res;
+      console.log(res)
+    })
   }
 
 }
