@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 
 @Component({
@@ -9,7 +10,8 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class HomePage implements OnInit{
   user: any;
-  constructor(private router: Router, private storage: Storage) { }
+  constructor(private router: Router,     private navCtrl: NavController,  
+    private storage: Storage) { }
 
    async ngOnInit() {
     await this.getUser()
@@ -27,7 +29,7 @@ export class HomePage implements OnInit{
 
   async logout() {
     await this.storage.remove('user');
-    this.router.navigate(['/login']);
+    this.navCtrl.navigateRoot('/login');
     
   }
 

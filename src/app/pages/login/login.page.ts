@@ -28,8 +28,9 @@ export class LoginPage implements OnInit {
     async login() {
       this.subscription = this.authService.login(this.form.value).subscribe(
         async (res: any) => {
+          await this.storage.remove('user')
           await this.storage.set('user', res); // Espera a conclusão da operação de armazenamento
-          this.router.navigate(['/home']);
+          this.navCtrl.navigateRoot('/home');
         },
         (error: any) => {
           this.presentAlert('Erro ao fazer login', "erro");
@@ -62,6 +63,10 @@ export class LoginPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }
